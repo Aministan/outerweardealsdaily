@@ -1,0 +1,2125 @@
+{
+  "site": {
+    "name": "OuterwearDealsDaily",
+    "owner": "Amin Peracha",
+    "description": "Deal pages for famous jackets, parkas, winter boots, and rain boots.",
+    "price_checked": "2026-11-15",
+    "future_domain": "outerweardealsdaily.com"
+  },
+  "sid": {
+    "pattern": "{pagetype}-{slug}-{placement}",
+    "max_length": 64,
+    "charset": "a-z0-9-_",
+    "placements": [
+      "cta",
+      "grid",
+      "table",
+      "also",
+      "related",
+      "text"
+    ],
+    "note": "SID is attached only after a merchant deep_link is set. Plain product URLs are not given a sid parameter."
+  },
+  "merchants": {
+    "columbia": {
+      "name": "Columbia",
+      "homepage": "https://www.columbia.com/",
+      "cj_advertiser_id": "2844548",
+      "commission_pct": 8,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "sorel": {
+      "name": "Sorel",
+      "homepage": "https://www.sorel.com/",
+      "cj_advertiser_id": "2854924",
+      "commission_pct": 8,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "canada-goose": {
+      "name": "Canada Goose",
+      "homepage": "https://www.canadagoose.com/en-us/",
+      "cj_advertiser_id": "5511596",
+      "commission_pct": 5,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "hunter": {
+      "name": "Hunter Boots",
+      "homepage": "https://hunterboots.com/",
+      "cj_advertiser_id": "6578297",
+      "commission_pct": 4,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "drmartens": {
+      "name": "Dr. Martens",
+      "homepage": "https://www.drmartens.com/us/en/",
+      "cj_advertiser_id": "5241344",
+      "commission_pct": 4,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "thursday": {
+      "name": "Thursday Boot Company",
+      "homepage": "https://thursdayboots.com/",
+      "cj_advertiser_id": "6533705",
+      "commission_pct": 4.5,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "frye": {
+      "name": "Frye",
+      "homepage": "https://www.thefryecompany.com/",
+      "cj_advertiser_id": "5111696",
+      "commission_pct": null,
+      "status": "cj application pending",
+      "deep_link": null
+    },
+    "xtratuf": {
+      "name": "Xtratuf",
+      "homepage": "https://xtratuf.com/",
+      "cj_advertiser_id": null,
+      "commission_pct": null,
+      "status": "direct link, no affiliate program on file",
+      "deep_link": null
+    },
+    "muck": {
+      "name": "Muck Boot Company",
+      "homepage": "https://muckbootcompany.com/",
+      "cj_advertiser_id": null,
+      "commission_pct": null,
+      "status": "direct link, no affiliate program on file",
+      "deep_link": null
+    }
+  },
+  "comparison_only": [
+    {
+      "slug": "patagonia-down-sweater",
+      "brand": "Patagonia",
+      "name": "Down Sweater",
+      "note": "Named only as a comparison. No affiliate program is approved, so this site does not add a buy link.",
+      "url": null
+    },
+    {
+      "slug": "patagonia-better-sweater",
+      "brand": "Patagonia",
+      "name": "Better Sweater",
+      "note": "Named only as a comparison. No affiliate program is approved, so this site does not add a buy link.",
+      "url": null
+    },
+    {
+      "slug": "north-face-nuptse",
+      "brand": "The North Face",
+      "name": "1996 Retro Nuptse",
+      "note": "Named only as a comparison. No affiliate program is approved, so this site does not add a buy link.",
+      "url": null
+    },
+    {
+      "slug": "ugg",
+      "brand": "UGG",
+      "name": "UGG boots",
+      "note": "Named only as a comparison on boot pages. No affiliate program is approved, so this site does not add a buy link.",
+      "url": null
+    }
+  ],
+  "notes": {
+    "prices": "price is null when the merchant page we read did not show a number. A later CJ product feed may set price, compare_at, and price_checked. Do not invent a price in the templates.",
+    "explorer": "Sorel Explorer Next Joan (style page 2123841) and Explorer III Joan Cozy (style page 2077981) both resolved to the Sorel homepage on 2026-11-15, so they are not product entries. A live Explorer product URL can be added here later.",
+    "deep_link": "Set merchants.<id>.deep_link to the CJ click base after approval. Leave it null to keep the plain product URL. Do not put a tracking URL in this file until it is approved, and do not request tracking URLs."
+  },
+  "products": {
+    "columbia-mens-bugaboo-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "jacket",
+      "family": "interchange",
+      "name": "Men's Bugaboo II Fleece Interchange Jacket",
+      "url": "https://www.columbia.com/p/mens-bugaboo-ii-fleece-interchange-jacket-1800661.html",
+      "image": "https://media.columbia.com/i/columbia/1800661_003_f",
+      "style": "1800661",
+      "summary": "Columbia describes the men's Bugaboo II as a 3-in-1 jacket with a waterproof-breathable outer shell and a fleece liner that can be worn separately or zipped together.",
+      "specs": [
+        [
+          "Style",
+          "1800661"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Shell",
+          "Omni-Tech Generation Dobby, 100% nylon"
+        ],
+        [
+          "Lining",
+          "Omni-Heat Reflective 210T taffeta, 100% polyester"
+        ],
+        [
+          "Inner jacket",
+          "100% polyester microfleece"
+        ],
+        [
+          "Center back length",
+          "30 inches"
+        ],
+        [
+          "Listed uses",
+          "Hiking, ski / snowsports"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-mens-bugaboo-ii"
+    },
+    "columbia-womens-bugaboo-iv": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "jacket",
+      "family": "interchange",
+      "name": "Women's Bugaboo IV Fleece Interchange Jacket",
+      "url": "https://www.columbia.com/p/womens-bugaboo-iv-fleece-interchange-jacket-2170781.html",
+      "image": "https://media.columbia.com/i/columbia/2170781_442_f_om",
+      "price": 230.0,
+      "style": "2170781",
+      "summary": "Columbia's women's Bugaboo IV is a waterproof interchange jacket with a thermal-reflective lining and an MTR fleece liner.",
+      "specs": [
+        [
+          "Style",
+          "2170781"
+        ],
+        [
+          "Listed price",
+          "$230.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation",
+          "Synthetic"
+        ],
+        [
+          "Water resistance",
+          "Waterproof"
+        ],
+        [
+          "Liner",
+          "100% polyester MTR microfilament fleece, 250g"
+        ],
+        [
+          "Center back length",
+          "28.0 in"
+        ],
+        [
+          "Listed use",
+          "Ski / snowsports"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-womens-bugaboo-iv"
+    },
+    "columbia-mens-whirlibird-v": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "jacket",
+      "family": "interchange",
+      "name": "Men's Whirlibird V Interchange Jacket",
+      "url": "https://www.columbia.com/p/mens-whirlibird-v-interchange-jacket-2090281.html",
+      "image": "https://media.columbia.com/i/columbia/2090281_027_f_om",
+      "price": 250.0,
+      "style": "2090281",
+      "summary": "Columbia calls the men's Whirlibird V a 3-in-1 ski jacket with a waterproof-breathable shell, thermal-reflective lining, and recycled polyester insulation.",
+      "specs": [
+        [
+          "Style",
+          "2090281"
+        ],
+        [
+          "Listed price",
+          "$250.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation",
+          "100% recycled polyester Thermarator"
+        ],
+        [
+          "Water resistance",
+          "Waterproof"
+        ],
+        [
+          "Ventilation",
+          "Yes"
+        ],
+        [
+          "Center back length",
+          "31.0 in"
+        ],
+        [
+          "Listed use",
+          "Ski / snowsports"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-mens-whirlibird-v"
+    },
+    "columbia-womens-whirlibird-v": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "jacket",
+      "family": "interchange",
+      "name": "Women's Whirlibird V Interchange Jacket",
+      "url": "https://www.columbia.com/p/womens-whirlibird-v-interchange-jacket-2094751.html",
+      "image": "https://media.columbia.com/i/columbia/2094751_618_f_om",
+      "price": 250.0,
+      "style": "2094751",
+      "summary": "Columbia's women's Whirlibird V is a 3-in-1 ski jacket with a waterproof shell, thermal-reflective lining, and recycled polyester insulation.",
+      "specs": [
+        [
+          "Style",
+          "2094751"
+        ],
+        [
+          "Listed price",
+          "$250.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation",
+          "100% recycled polyester"
+        ],
+        [
+          "Water resistance",
+          "Waterproof"
+        ],
+        [
+          "Ventilation",
+          "Yes"
+        ],
+        [
+          "Center back length",
+          "28.0 in"
+        ],
+        [
+          "Listed use",
+          "Ski / snowsports"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-womens-whirlibird-v"
+    },
+    "columbia-mens-powder-lite-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "jacket",
+      "family": "puffer",
+      "name": "Men's Powder Lite II Jacket",
+      "url": "https://www.columbia.com/p/mens-powder-lite-ii-jacket-2086961.html",
+      "image": "https://media.columbia.com/i/columbia/2086961_342_f_om",
+      "price": 115.5,
+      "compare_at": 165.0,
+      "style": "2086961",
+      "summary": "Columbia lists the men's Powder Lite II as a water-repellent puffer with thermal-reflective lining and recycled synthetic insulation. The same page showed $115.50 as the current price and $165.00 as the original price.",
+      "specs": [
+        [
+          "Style",
+          "2086961"
+        ],
+        [
+          "Current price on the page",
+          "$115.50"
+        ],
+        [
+          "Original price on the page",
+          "$165.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation",
+          "100% recycled polyester"
+        ],
+        [
+          "Water resistance",
+          "Water-repellent"
+        ],
+        [
+          "Center back length",
+          "28.0 in"
+        ],
+        [
+          "Listed use",
+          "Hiking"
+        ]
+      ],
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-mens-powder-lite-ii"
+    },
+    "columbia-womens-powder-lite-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "jacket",
+      "family": "puffer",
+      "name": "Women's Powder Lite II Hooded Jacket",
+      "url": "https://www.columbia.com/p/womens-powder-lite-ii-hooded-jacket-2089391.html",
+      "image": "https://media.columbia.com/i/columbia/2089391_442_f_om",
+      "price": 115.5,
+      "compare_at": 165.0,
+      "style": "2089391",
+      "summary": "Columbia lists the women's Powder Lite II hooded jacket at $115.50, with $165.00 shown as the original price. The page describes thermal-reflective lining and recycled synthetic insulation.",
+      "specs": [
+        [
+          "Style",
+          "2089391"
+        ],
+        [
+          "Current price on the page",
+          "$115.50"
+        ],
+        [
+          "Original price on the page",
+          "$165.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation",
+          "100% recycled polyester"
+        ],
+        [
+          "Water resistance",
+          "Water-repellent"
+        ],
+        [
+          "Hood",
+          "Attached"
+        ],
+        [
+          "Center back length",
+          "26.0 in"
+        ]
+      ],
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-womens-powder-lite-ii"
+    },
+    "columbia-mens-watertight-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "jacket",
+      "family": "rain",
+      "name": "Men's Watertight II Rain Jacket",
+      "url": "https://www.columbia.com/p/mens-watertight-ii-rain-jacket-1533891.html",
+      "image": "https://media.columbia.com/i/columbia/1533891_257_f_om",
+      "price": 70.0,
+      "compare_at": 100.0,
+      "style": "1533891",
+      "summary": "Columbia lists the men's Watertight II as a packable rain shell with fully seam-sealed Omni-Tech fabric. The page showed $70.00 current and $100.00 original.",
+      "specs": [
+        [
+          "Style",
+          "1533891"
+        ],
+        [
+          "Current price on the page",
+          "$70.00"
+        ],
+        [
+          "Original price on the page",
+          "$100.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Light Warmth"
+        ],
+        [
+          "Water resistance",
+          "Waterproof"
+        ],
+        [
+          "Material",
+          "100% nylon 2L"
+        ],
+        [
+          "Center back length",
+          "29.0 in"
+        ],
+        [
+          "Listed uses",
+          "Hiking, everyday"
+        ]
+      ],
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-mens-watertight-ii"
+    },
+    "columbia-womens-arcadia-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "jacket",
+      "family": "rain",
+      "name": "Women's Arcadia II Rain Jacket",
+      "url": "https://www.columbia.com/p/womens-arcadia-ii-rain-jacket-1534111.html",
+      "image": "https://media.columbia.com/i/columbia/1534111_308_f_om",
+      "price": 70.0,
+      "compare_at": 100.0,
+      "style": "1534111",
+      "summary": "Columbia lists the women's Arcadia II as a packable rain shell with fully seam-sealed Omni-Tech fabric. The page showed $70.00 current and $100.00 original.",
+      "specs": [
+        [
+          "Style",
+          "1534111"
+        ],
+        [
+          "Current price on the page",
+          "$70.00"
+        ],
+        [
+          "Original price on the page",
+          "$100.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Light Warmth"
+        ],
+        [
+          "Water resistance",
+          "Waterproof"
+        ],
+        [
+          "Material",
+          "100% nylon 2L"
+        ],
+        [
+          "Center back length",
+          "26.0 in"
+        ],
+        [
+          "Listed uses",
+          "Hiking, everyday"
+        ]
+      ],
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-womens-arcadia-ii"
+    },
+    "columbia-mens-puffect-iv": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "jacket",
+      "family": "puffer",
+      "name": "Men's Puffect IV Jacket",
+      "url": "https://www.columbia.com/p/mens-puffect-iv-jacket-2174301.html",
+      "image": "https://media.columbia.com/i/columbia/2174301_257_f_om",
+      "price": 130.0,
+      "style": "2174301",
+      "summary": "Columbia lists the men's Puffect IV at $130.00. The spec table says synthetic insulation and the materials list says 100% recycled polyester Thermarator.",
+      "specs": [
+        [
+          "Style",
+          "2174301"
+        ],
+        [
+          "Listed price",
+          "$130.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Medium Warmth"
+        ],
+        [
+          "Insulation type on the spec table",
+          "Synthetic"
+        ],
+        [
+          "Insulation material",
+          "100% recycled polyester"
+        ],
+        [
+          "Water resistance",
+          "Water-repellent"
+        ],
+        [
+          "Center back length",
+          "29.0 in"
+        ],
+        [
+          "Listed use",
+          "Hiking"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-mens-puffect-iv"
+    },
+    "columbia-womens-puffect-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "jacket",
+      "family": "puffer",
+      "name": "Women's Puffect II Colorblock Jacket",
+      "url": "https://www.columbia.com/p/womens-puffect-ii-colorblock-jacket-2088481.html",
+      "style": "2088481",
+      "summary": "Columbia describes the women's Puffect II Colorblock as a water-repellent jacket with recycled insulation. The product page we read did not show a price.",
+      "specs": [
+        [
+          "Style",
+          "2088481"
+        ],
+        [
+          "Insulation",
+          "100% recycled polyester Thermarator"
+        ],
+        [
+          "Shell",
+          "100% polyester"
+        ],
+        [
+          "Lining",
+          "100% nylon 210T taffeta"
+        ],
+        [
+          "Center back length",
+          "25.0 in"
+        ],
+        [
+          "Listed use",
+          "Hiking"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "image": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-womens-puffect-ii"
+    },
+    "columbia-womens-ice-maiden-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Women's Ice Maiden II Boot",
+      "url": "https://www.columbia.com/p/womens-ice-maiden-ii-boot-1554171.html",
+      "image": "https://media.columbia.com/i/columbia/1554171_080_f_tt",
+      "price": 110.0,
+      "style": "1554171",
+      "summary": "Columbia lists the women's Ice Maiden II at $110.00 and describes it as a waterproof-breathable lace-up winter boot with 200g insulation.",
+      "specs": [
+        [
+          "Style",
+          "1554171"
+        ],
+        [
+          "Listed price",
+          "$110.00"
+        ],
+        [
+          "Columbia warmth label",
+          "Light Warmth"
+        ],
+        [
+          "Insulation weight",
+          "200 g"
+        ],
+        [
+          "Protection",
+          "Waterproof"
+        ],
+        [
+          "Shaft height",
+          "9 inches"
+        ],
+        [
+          "Weight",
+          "16.8 oz per shoe"
+        ],
+        [
+          "Listed use",
+          "Everyday"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "columbia-womens-ice-maiden-ii"
+    },
+    "columbia-womens-minx-mid-iii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Women's Minx Mid III Boot",
+      "url": "https://www.columbia.com/p/womens-minx-mid-iii-boot-1803121.html",
+      "style": "1803121",
+      "summary": "Columbia describes the women's Minx Mid III as a mid-calf boot with a seam-sealed waterproof bootie, thermal-reflective lining, and 200g insulation. The page we read did not show a price.",
+      "specs": [
+        [
+          "Style",
+          "1803121"
+        ],
+        [
+          "Insulation",
+          "200g"
+        ],
+        [
+          "Upper",
+          "Woven synthetic textile"
+        ],
+        [
+          "Boot shaft height",
+          "25 cm"
+        ],
+        [
+          "Boot shaft circumference",
+          "24 cm"
+        ],
+        [
+          "Weight",
+          "13.3 oz / 375 g per shoe, size 7"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "image": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-womens-minx-mid-iii"
+    },
+    "columbia-mens-bugaboot-celsius": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Men's Bugaboot Celsius Boot",
+      "url": "https://www.columbia.com/p/mens-bugaboot-celsius-boot-2100871.html",
+      "style": "2100871",
+      "summary": "Columbia describes the men's Bugaboot Celsius as a winter boot with a waterproof upper, Omni-Heat Infinity lining, and 200g insulation. The page we read did not show a price.",
+      "specs": [
+        [
+          "Style",
+          "2100871"
+        ],
+        [
+          "Insulation",
+          "200g"
+        ],
+        [
+          "Lining",
+          "Omni-Heat Infinity"
+        ],
+        [
+          "Listed use",
+          "Ski / snowsports"
+        ],
+        [
+          "Weight",
+          "23.8 oz / 673 g per shoe, men's size 9"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "image": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-mens-bugaboot-celsius"
+    },
+    "columbia-mens-newton-ridge-plus-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "men",
+      "category": "boot",
+      "family": "hike-boot",
+      "name": "Men's Newton Ridge Plus II Waterproof Omni-Heat Boot",
+      "url": "https://www.columbia.com/p/mens-newton-ridge-plus-ii-waterproof-omni-heat-boot-2100681.html",
+      "image": "https://media.columbia.com/i/columbia/2100681_010_f_tt",
+      "style": "2100681",
+      "summary": "Columbia describes the men's Newton Ridge Plus II as a waterproof hiking boot with thermal-reflective lining and fleece lining. The product page we read did not show a price.",
+      "specs": [
+        [
+          "Style",
+          "2100681"
+        ],
+        [
+          "Protection",
+          "Waterproof"
+        ],
+        [
+          "Lining",
+          "Fleece, plus Omni-Heat thermal-reflective lining"
+        ],
+        [
+          "Midsole",
+          "Techlite"
+        ],
+        [
+          "Outsole",
+          "Omni-Grip"
+        ],
+        [
+          "Listed use",
+          "Hiking"
+        ],
+        [
+          "Terrain on the spec table",
+          "Wet/dry/loose rock"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-mens-newton-ridge-plus-ii"
+    },
+    "columbia-womens-newton-ridge-plus-ii": {
+      "brand": "Columbia",
+      "merchant": "columbia",
+      "gender": "women",
+      "category": "boot",
+      "family": "hike-boot",
+      "name": "Women's Newton Ridge Plus II Waterproof Omni-Heat Boot",
+      "url": "https://www.columbia.com/p/womens-newton-ridge-plus-ii-wp-omni-heat-boot-2100221.html",
+      "style": "2100221",
+      "summary": "Columbia describes the women's Newton Ridge Plus II as a waterproof hiking boot with thermal-reflective lining and fleece lining. The page we read did not show a price.",
+      "specs": [
+        [
+          "Style",
+          "2100221"
+        ],
+        [
+          "Protection",
+          "Waterproof"
+        ],
+        [
+          "Lining",
+          "Fleece, plus Omni-Heat thermal-reflective lining"
+        ],
+        [
+          "Midsole",
+          "Techlite"
+        ],
+        [
+          "Outsole",
+          "Omni-Grip"
+        ],
+        [
+          "Listed use",
+          "Hiking"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "image": null,
+      "price": null,
+      "price_checked": null,
+      "price_source": null,
+      "slug": "columbia-womens-newton-ridge-plus-ii"
+    },
+    "canada-goose-mens-expedition-parka": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "men",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Men's Expedition Parka",
+      "url": "https://www.canadagoose.com/en-us/products/expedition-parka-2051m",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2051M_9061_on_front_01.jpg?v=1792743247",
+      "price": 1895.0,
+      "style": "2051M",
+      "summary": "Canada Goose lists the men's Expedition Parka at $1,895. The product page describes Arctic Tech fabric and 625-fill-power down, and prints the brand's own temperature line as -22°F and below, TEI 5.",
+      "specs": [
+        [
+          "Style",
+          "2051M"
+        ],
+        [
+          "Listed price",
+          "$1,895"
+        ],
+        [
+          "Canada Goose temperature line",
+          "-22°F and below"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 5"
+        ],
+        [
+          "Fill",
+          "625 fill power, 80% down, 20% feathers"
+        ],
+        [
+          "Exterior",
+          "84% recycled polyester, 16% organic cotton"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-mens-expedition-parka"
+    },
+    "canada-goose-womens-expedition-parka": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "women",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Women's Expedition Parka",
+      "url": "https://www.canadagoose.com/en-us/products/expedition-parka-2051w",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2051W_9061_on_front_01.jpg?v=1792739020",
+      "price": 1895.0,
+      "style": "2051W",
+      "summary": "Canada Goose lists the women's Expedition Parka at $1,895. The product page describes Arctic Tech fabric and 625-fill-power down, and prints -22°F and below, TEI 5.",
+      "specs": [
+        [
+          "Style",
+          "2051W"
+        ],
+        [
+          "Listed price",
+          "$1,895"
+        ],
+        [
+          "Canada Goose temperature line",
+          "-22°F and below"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 5"
+        ],
+        [
+          "Fill",
+          "625 fill power, 80% down, 20% feathers"
+        ],
+        [
+          "Exterior",
+          "84% recycled polyester, 16% organic cotton"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-womens-expedition-parka"
+    },
+    "canada-goose-langford-parka": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "men",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Langford Parka",
+      "url": "https://www.canadagoose.com/en-us/products/langford-parka-2052m",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2052M_9061_on_front_01.jpg?v=1792825197",
+      "price": 1595.0,
+      "style": "2052M",
+      "summary": "Canada Goose lists the Langford Parka at $1,595. The product page prints the brand's temperature line as 5°F to -13°F, TEI 4.",
+      "specs": [
+        [
+          "Style",
+          "2052M"
+        ],
+        [
+          "Listed price",
+          "$1,595"
+        ],
+        [
+          "Canada Goose temperature line",
+          "5°F to -13°F"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 4"
+        ],
+        [
+          "Fill",
+          "625 fill power, 80% down, 20% feathers"
+        ],
+        [
+          "Exterior",
+          "84% recycled polyester, 16% organic cotton"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-langford-parka"
+    },
+    "canada-goose-shelburne-parka": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "women",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Shelburne Parka",
+      "url": "https://www.canadagoose.com/en-us/products/shelburne-parka-3802w",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/3802W_9061_on_front_01.jpg?v=1792747383",
+      "price": 1525.0,
+      "style": "3802W",
+      "summary": "Canada Goose lists the Shelburne Parka at $1,525. The product page prints 14°F to -4°F, TEI 3, and describes a down-filled snorkel hood.",
+      "specs": [
+        [
+          "Style",
+          "3802W"
+        ],
+        [
+          "Listed price",
+          "$1,525"
+        ],
+        [
+          "Canada Goose temperature line",
+          "14°F to -4°F"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 3"
+        ],
+        [
+          "Fill",
+          "625 fill power, 80% down, 20% feathers"
+        ],
+        [
+          "Exterior",
+          "84% recycled polyester, 16% organic cotton"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-shelburne-parka"
+    },
+    "canada-goose-mens-chilliwack-bomber": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "men",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Men's Chilliwack Bomber",
+      "url": "https://www.canadagoose.com/en-us/products/chilliwack-bomber-2050m",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2050M_9061_on_front_01.jpg?v=1792745998",
+      "price": 1375.0,
+      "style": "2050M",
+      "summary": "Canada Goose lists the men's Chilliwack Bomber at $1,375. The product page prints 14°F to -4°F, TEI 3, and describes a bomber silhouette with rib-knit cuffs and hem.",
+      "specs": [
+        [
+          "Style",
+          "2050M"
+        ],
+        [
+          "Listed price",
+          "$1,375"
+        ],
+        [
+          "Canada Goose temperature line",
+          "14°F to -4°F"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 3"
+        ],
+        [
+          "Fill",
+          "625 fill power, 80% down, 20% feathers"
+        ],
+        [
+          "Exterior",
+          "84% recycled polyester, 16% organic cotton"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-mens-chilliwack-bomber"
+    },
+    "canada-goose-womens-chilliwack-bomber": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "women",
+      "category": "jacket",
+      "family": "parka",
+      "name": "Women's Chilliwack Bomber",
+      "url": "https://www.canadagoose.com/en-us/products/chilliwack-bomber-2050w",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2050W_9061_on_front_01.jpg?v=1792740478",
+      "price": 1375.0,
+      "style": "2050W",
+      "summary": "Canada Goose's product record lists the women's Chilliwack Bomber at $1,375. A temperature line is not repeated here because it was not read on this women's page.",
+      "specs": [
+        [
+          "Style",
+          "2050W"
+        ],
+        [
+          "Listed price",
+          "$1,375"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-womens-chilliwack-bomber"
+    },
+    "canada-goose-crofton-puffer": {
+      "brand": "Canada Goose",
+      "merchant": "canada-goose",
+      "gender": "men",
+      "category": "jacket",
+      "family": "puffer",
+      "name": "Crofton EnduraLuxe Puffer",
+      "url": "https://www.canadagoose.com/en-us/products/crofton-enduraluxe-puffer-2282mb",
+      "image": "https://cdn.shopify.com/s/files/1/0761/4686/8448/files/2282MB_9061_on_front_01.jpg?v=1792744533",
+      "price": 1295.0,
+      "style": "2282MB",
+      "summary": "Canada Goose lists the Crofton EnduraLuxe Puffer at $1,295. The page describes a packable down jacket and prints 5°F to -13°F, TEI 4.",
+      "specs": [
+        [
+          "Style",
+          "2282MB"
+        ],
+        [
+          "Listed price",
+          "$1,295"
+        ],
+        [
+          "Canada Goose temperature line",
+          "5°F to -13°F"
+        ],
+        [
+          "Canada Goose TEI label",
+          "TEI 4"
+        ],
+        [
+          "Fill",
+          "750 fill power, 90% down, 10% feathers"
+        ],
+        [
+          "Exterior",
+          "100% recycled polyamide"
+        ],
+        [
+          "Origin on the page",
+          "Made in Canada"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "canada-goose-crofton-puffer"
+    },
+    "sorel-womens-caribou": {
+      "brand": "Sorel",
+      "merchant": "sorel",
+      "gender": "women",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Women's Caribou Boot",
+      "url": "https://www.sorel.com/p/caribou-womens-waterproof-boot-1003812.html",
+      "image": "https://media.sorel.com/i/sorel/1003812_051_f?w=768&h=806&fmt=auto",
+      "price": 250.0,
+      "style": "1003812",
+      "summary": "Sorel lists the women's Caribou at a regular price of $250.00 and describes seam-sealed waterproof construction with a removable 9 mm lining.",
+      "specs": [
+        [
+          "Style",
+          "1003812"
+        ],
+        [
+          "Regular price on the page",
+          "$250.00"
+        ],
+        [
+          "Upper",
+          "Waterproof nubuck leather. Laces are not waterproof."
+        ],
+        [
+          "Lining",
+          "Removable 9 mm"
+        ],
+        [
+          "Listed use",
+          "Heavy snow"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "sorel-womens-caribou"
+    },
+    "sorel-mens-caribou": {
+      "brand": "Sorel",
+      "merchant": "sorel",
+      "gender": "men",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Men's Caribou Boot",
+      "url": "https://www.sorel.com/p/caribou-mens-waterproof-boot-1002871.html",
+      "image": "https://media.sorel.com/i/sorel/1002871_281_f?w=768&h=806&fmt=auto",
+      "price": 250.0,
+      "style": "1002871",
+      "summary": "Sorel lists the men's Caribou at a regular price of $250.00 and describes seam-sealed waterproof construction with a removable 9 mm lining.",
+      "specs": [
+        [
+          "Style",
+          "1002871"
+        ],
+        [
+          "Regular price on the page",
+          "$250.00"
+        ],
+        [
+          "Upper",
+          "Waterproof nubuck. Laces are not waterproof."
+        ],
+        [
+          "Lining",
+          "Removable 9 mm"
+        ],
+        [
+          "Listed use",
+          "Heavy snow"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "sorel-mens-caribou"
+    },
+    "sorel-joan-of-arctic": {
+      "brand": "Sorel",
+      "merchant": "sorel",
+      "gender": "women",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Women's Joan of Arctic Boot",
+      "url": "https://www.sorel.com/p/joan-of-arctic-womens-waterproof-boot-2115181.html",
+      "image": "https://media.sorel.com/i/sorel/2115181_010_f?w=768&h=806&fmt=auto",
+      "price": 240.0,
+      "style": "2115181",
+      "summary": "Sorel lists the women's Joan of Arctic at a regular price of $240.00 and describes a waterproof suede upper with a faux-fur cuff and a removable 9 mm lining.",
+      "specs": [
+        [
+          "Style",
+          "2115181"
+        ],
+        [
+          "Regular price on the page",
+          "$240.00"
+        ],
+        [
+          "Upper",
+          "Waterproof suede with faux-fur cuff. Laces are not waterproof."
+        ],
+        [
+          "Lining",
+          "Removable 9 mm"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "sorel-joan-of-arctic"
+    },
+    "sorel-out-n-about-iv": {
+      "brand": "Sorel",
+      "merchant": "sorel",
+      "gender": "women",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Women's Out N About IV Classic Boot",
+      "url": "https://www.sorel.com/p/out-n-about-iv-classic-womens-waterproof-boot-2088161.html",
+      "image": "https://media.sorel.com/i/sorel/2088161_243_f?w=768&h=806&fmt=auto",
+      "price": 140.0,
+      "style": "2088161",
+      "summary": "Sorel lists the women's Out N About IV Classic at a regular price of $140.00 and describes a waterproof duck boot with a vulcanized rubber shell.",
+      "specs": [
+        [
+          "Style",
+          "2088161"
+        ],
+        [
+          "Regular price on the page",
+          "$140.00"
+        ],
+        [
+          "Upper",
+          "Waterproof full-grain leather, suede, or felt and leather, depending on color. Laces are not waterproof."
+        ],
+        [
+          "Footbed",
+          "EVA"
+        ],
+        [
+          "Midsole",
+          "PU SteadySole"
+        ],
+        [
+          "Outsole",
+          "Evertread molded rubber"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "sorel-out-n-about-iv"
+    },
+    "hunter-womens-original-tall": {
+      "brand": "Hunter",
+      "merchant": "hunter",
+      "gender": "women",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Women's Original Tall Rain Boots",
+      "url": "https://hunterboots.com/products/womens-original-tall-rain-boots-in-black-wft1000rma-hbl01",
+      "image": "https://cdn.shopify.com/s/files/1/0769/0561/1556/files/HWT1000RMA_HBL01-RZB.jpg?v=1791305403",
+      "price": 190.0,
+      "style": "WFT1000RMA",
+      "summary": "Hunter lists the women's Original Tall rain boot in black at $190.00 and describes a matte natural-rubber boot handcrafted from 28 parts, with a shaft that rises to the knee.",
+      "specs": [
+        [
+          "Listed price",
+          "$190.00"
+        ],
+        [
+          "Color on this page",
+          "Black"
+        ],
+        [
+          "Upper",
+          "Natural rubber, matte"
+        ],
+        [
+          "Construction note on the page",
+          "Handcrafted from 28 individual parts"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "hunter-womens-original-tall"
+    },
+    "hunter-mens-original-tall": {
+      "brand": "Hunter",
+      "merchant": "hunter",
+      "gender": "men",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Men's Original Tall Rain Boots",
+      "url": "https://hunterboots.com/products/mens-original-tall-rain-boots-in-black-mft9000rma-hbl01",
+      "image": "https://cdn.shopify.com/s/files/1/0769/0561/1556/files/c1482c0389c2bd05f7433e5650d43a33a47b2a0a.jpg?v=1773338585",
+      "price": 225.0,
+      "style": "MFT9000RMA",
+      "summary": "Hunter lists the men's Original Tall rain boot in black at $225.00. The page says the shaft rises just above mid-calf and that the boot is handcrafted from 28 parts of natural rubber.",
+      "specs": [
+        [
+          "Listed price",
+          "$225.00"
+        ],
+        [
+          "Color on this page",
+          "Black"
+        ],
+        [
+          "Upper",
+          "Natural rubber"
+        ],
+        [
+          "Shaft note on the page",
+          "Rises just above mid-calf"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "hunter-mens-original-tall"
+    },
+    "hunter-womens-original-short": {
+      "brand": "Hunter",
+      "merchant": "hunter",
+      "gender": "women",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Women's Original Short Rain Boots",
+      "url": "https://hunterboots.com/products/womens-original-short-rain-boots-in-black-wfs1000rma-hbl01",
+      "image": "https://cdn.shopify.com/s/files/1/0769/0561/1556/files/HWS1000RMA_HBL01-RZB.jpg?v=1791304010",
+      "price": 165.0,
+      "style": "WFS1000RMA",
+      "summary": "Hunter lists the women's Original Short rain boot in black at $165.00 and describes a mid-shaft natural-rubber boot.",
+      "specs": [
+        [
+          "Listed price",
+          "$165.00"
+        ],
+        [
+          "Color on this page",
+          "Black"
+        ],
+        [
+          "Upper",
+          "Natural rubber, matte"
+        ],
+        [
+          "Height note on the page",
+          "Mid-shaft"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "hunter-womens-original-short"
+    },
+    "hunter-mens-original-short": {
+      "brand": "Hunter",
+      "merchant": "hunter",
+      "gender": "men",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Men's Original Short Rain Boots",
+      "url": "https://hunterboots.com/products/mens-original-short-rain-boots-in-black-mfs9000rma-hbl01",
+      "image": "https://cdn.shopify.com/s/files/1/0769/0561/1556/files/221453e04f17d05c8d3bd67f8bae5b89b8302582.jpg?v=1773338578",
+      "price": 185.0,
+      "style": "MFS9000RMA",
+      "summary": "Hunter lists the men's Original Short rain boot in black at $185.00 and describes a mid-shaft natural-rubber boot.",
+      "specs": [
+        [
+          "Listed price",
+          "$185.00"
+        ],
+        [
+          "Color on this page",
+          "Black"
+        ],
+        [
+          "Upper",
+          "Natural rubber"
+        ],
+        [
+          "Height note on the page",
+          "Mid-shaft"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "hunter-mens-original-short"
+    },
+    "drmartens-1460": {
+      "brand": "Dr. Martens",
+      "merchant": "drmartens",
+      "gender": "unisex",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "1460 Smooth Leather Lace Up Boots",
+      "url": "https://www.drmartens.com/us/en/1460-smooth-leather-lace-up-boots-black/p/11822006",
+      "image": "https://cdn.media.amplience.net/i/drmartens/NX_11822006.80",
+      "price": 180.0,
+      "style": "11822006",
+      "summary": "Dr. Martens lists the 1460 Smooth leather lace-up boot in black at $180.00. The page describes the original 8-eye boot, with yellow welt stitching and a PVC sole.",
+      "specs": [
+        [
+          "Style",
+          "11822006"
+        ],
+        [
+          "Listed price",
+          "$180.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Upper",
+          "100% leather"
+        ],
+        [
+          "Inner",
+          "25% leather, 75% textile"
+        ],
+        [
+          "Sole",
+          "100% PVC"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "drmartens-1460"
+    },
+    "drmartens-2976-chelsea": {
+      "brand": "Dr. Martens",
+      "merchant": "drmartens",
+      "gender": "unisex",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "2976 Smooth Leather Chelsea Boots",
+      "url": "https://www.drmartens.com/us/en/2976-smooth-leather-chelsea-boots-black/p/11853001",
+      "image": "https://cdn.media.amplience.net/i/drmartens/11853001.80.jpg",
+      "price": 99.97,
+      "compare_at": 170.0,
+      "in_stock": false,
+      "style": "11853001",
+      "summary": "Dr. Martens listed the 2976 Smooth leather Chelsea boot in black at $99.97, with $170.00 shown as the original price. The same page said out of stock on the day we read it.",
+      "specs": [
+        [
+          "Style",
+          "11853001"
+        ],
+        [
+          "Price on the page",
+          "$99.97"
+        ],
+        [
+          "Original price on the page",
+          "$170.00"
+        ],
+        [
+          "Availability on the page",
+          "Out of stock"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Construction note",
+          "Pull-on Chelsea with elasticated gussets"
+        ]
+      ],
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "drmartens-2976-chelsea"
+    },
+    "drmartens-jadon": {
+      "brand": "Dr. Martens",
+      "merchant": "drmartens",
+      "gender": "unisex",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Jadon Smooth Leather Platform Boots",
+      "url": "https://www.drmartens.com/us/en/jadon-boot-smooth-leather-platforms-black/p/15265001",
+      "image": "https://cdn.media.amplience.net/i/drmartens/NX_15265001.80",
+      "price": 210.0,
+      "style": "15265001",
+      "summary": "Dr. Martens lists the Jadon Smooth leather platform boot in black at $210.00. The page describes a platform sole, yellow welt stitching, and an inside zip.",
+      "specs": [
+        [
+          "Style",
+          "15265001"
+        ],
+        [
+          "Listed price",
+          "$210.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Leather name on the page",
+          "Polished Smooth"
+        ],
+        [
+          "Closure note",
+          "Inside zip"
+        ],
+        [
+          "Sole note",
+          "Platform sole with yellow welt stitching"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "drmartens-jadon"
+    },
+    "drmartens-1461": {
+      "brand": "Dr. Martens",
+      "merchant": "drmartens",
+      "gender": "unisex",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "1461 Smooth Leather Oxford Shoes",
+      "url": "https://www.drmartens.com/us/en/1461-smooth-leather-oxford-shoes-black/p/11838002",
+      "image": "https://cdn.media.amplience.net/i/drmartens/NX_11838002.80",
+      "price": 160.0,
+      "style": "11838002",
+      "summary": "Dr. Martens lists the 1461 Smooth leather oxford in black at $160.00. The page describes a 3-eye shoe with yellow welt stitching.",
+      "specs": [
+        [
+          "Style",
+          "11838002"
+        ],
+        [
+          "Listed price",
+          "$160.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Upper note",
+          "Smooth leather"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "drmartens-1461"
+    },
+    "thursday-mens-captain": {
+      "brand": "Thursday Boot Company",
+      "merchant": "thursday",
+      "gender": "men",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Men's Captain Boot",
+      "url": "https://thursdayboots.com/products/mens-captain-lace-up-boot-black-matte",
+      "image": "https://cdn.shopify.com/s/files/1/0419/1525/products/3.4_Captain_BlackMatte.jpg?v=1569226836",
+      "price": 199.0,
+      "summary": "Thursday Boot Company lists the men's Captain in black matte at $199.00. The product data names Goodyear welt construction, a glove-leather lining, and a studded rubber outsole.",
+      "specs": [
+        [
+          "Listed price",
+          "$199.00"
+        ],
+        [
+          "Color",
+          "Black matte"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ],
+        [
+          "Lining",
+          "Glove leather"
+        ],
+        [
+          "Outsole",
+          "Studded rubber"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "thursday-mens-captain"
+    },
+    "thursday-womens-captain": {
+      "brand": "Thursday Boot Company",
+      "merchant": "thursday",
+      "gender": "women",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Women's Captain Boot",
+      "url": "https://thursdayboots.com/products/womens-captain-boot-black-matte",
+      "image": "https://cdn.shopify.com/s/files/1/0419/1525/products/Side_Captain_Black_Matte_1.jpg?v=1569244714",
+      "price": 198.0,
+      "summary": "Thursday Boot Company lists the women's Captain in black matte at $198.00. The product data gives a 1 inch heel and a 5.75 inch shaft.",
+      "specs": [
+        [
+          "Listed price",
+          "$198.00"
+        ],
+        [
+          "Color",
+          "Black matte"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ],
+        [
+          "Heel",
+          "1 inch"
+        ],
+        [
+          "Shaft",
+          "5.75 inches"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "thursday-womens-captain"
+    },
+    "thursday-mens-duke": {
+      "brand": "Thursday Boot Company",
+      "merchant": "thursday",
+      "gender": "men",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Men's Duke Chelsea Boot",
+      "url": "https://thursdayboots.com/products/mens-black-duke-chelsea",
+      "image": "https://cdn.shopify.com/s/files/1/0419/1525/files/1024x1024-Men-Duke-Black-120623-3.4.jpg?v=1708643654",
+      "price": 199.0,
+      "summary": "Thursday Boot Company lists the men's Duke Chelsea in black at $199.00. The product data names Goodyear welt construction and a studded rubber outsole.",
+      "specs": [
+        [
+          "Listed price",
+          "$199.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ],
+        [
+          "Outsole",
+          "Studded rubber"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "thursday-mens-duke"
+    },
+    "thursday-mens-cadet": {
+      "brand": "Thursday Boot Company",
+      "merchant": "thursday",
+      "gender": "men",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Men's Cadet Boot",
+      "url": "https://thursdayboots.com/products/mens-cadet-lace-up-boot-black",
+      "image": "https://cdn.shopify.com/s/files/1/0419/1525/files/1024x1024-Mens-Cadet-Black-083023-3.4_4e403beb-ac22-4a2d-93c7-d84af24ba512.jpg?v=1694197271",
+      "price": 190.0,
+      "summary": "Thursday Boot Company lists the men's Cadet in black at $190.00. The product data names Blake stitch construction and a full-grain leather upper.",
+      "specs": [
+        [
+          "Listed price",
+          "$190.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Construction",
+          "Blake stitch"
+        ],
+        [
+          "Upper",
+          "Full-grain leather"
+        ],
+        [
+          "Outsole",
+          "Studded rubber"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "thursday-mens-cadet"
+    },
+    "frye-mens-harness-8r": {
+      "brand": "Frye",
+      "merchant": "frye",
+      "gender": "men",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Men's Harness 8R",
+      "url": "https://www.thefryecompany.com/products/harness-8r-mens-black",
+      "image": "https://cdn.shopify.com/s/files/1/0140/3371/5254/files/harness-8r-mens_8f16f5c95b57f887bb965c57a55a1119a__black_1.jpg?v=1776738027",
+      "price": 468.0,
+      "summary": "Frye lists the men's Harness 8R in black at $468.00. The product text names Goodyear welt construction and a leather upper.",
+      "specs": [
+        [
+          "Listed price",
+          "$468.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "frye-mens-harness-8r"
+    },
+    "frye-womens-harness-8r": {
+      "brand": "Frye",
+      "merchant": "frye",
+      "gender": "women",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Women's Harness 8R",
+      "url": "https://www.thefryecompany.com/products/harness-8r-womens-black",
+      "image": "https://cdn.shopify.com/s/files/1/0140/3371/5254/files/harness-8r-womens_99fc5a04986f05a70e1428d378644355a__black_1.jpg?v=1776737965",
+      "price": 468.0,
+      "summary": "Frye lists the women's Harness 8R in black at $468.00. The product text names washed and oiled leather and Goodyear welt construction.",
+      "specs": [
+        [
+          "Listed price",
+          "$468.00"
+        ],
+        [
+          "Color",
+          "Black"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ],
+        [
+          "Leather note",
+          "Washed and oiled leather"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "frye-womens-harness-8r"
+    },
+    "frye-womens-harness-12r": {
+      "brand": "Frye",
+      "merchant": "frye",
+      "gender": "women",
+      "category": "boot",
+      "family": "dress-boot",
+      "name": "Women's Harness 12R",
+      "url": "https://www.thefryecompany.com/products/harness-12r-womens-tan",
+      "image": "https://cdn.shopify.com/s/files/1/0140/3371/5254/files/harness-12r-womens_ee69058493d350f687511f35ed7e95cba__tan_1.jpg?v=1778724746",
+      "price": 498.0,
+      "summary": "Frye lists the women's Harness 12R in tan at $498.00. The product page describes an unlined boot with a rubber outsole, Goodyear welt, a 12 inch shaft, and a 1.8 inch heel.",
+      "specs": [
+        [
+          "Listed price",
+          "$498.00"
+        ],
+        [
+          "Color",
+          "Tan"
+        ],
+        [
+          "Shaft height",
+          "12 inches"
+        ],
+        [
+          "Calf circumference",
+          "14 inches"
+        ],
+        [
+          "Heel height",
+          "1.8 inches"
+        ],
+        [
+          "Construction",
+          "Goodyear welt"
+        ],
+        [
+          "Lining",
+          "Unlined"
+        ],
+        [
+          "Outsole",
+          "Rubber"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "frye-womens-harness-12r"
+    },
+    "xtratuf-mens-legacy-15": {
+      "brand": "Xtratuf",
+      "merchant": "xtratuf",
+      "gender": "men",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Men's 15\" Legacy Boot",
+      "url": "https://xtratuf.com/products/xml000",
+      "image": "https://cdn.shopify.com/s/files/1/0676/1385/1803/files/XML000_gray_hero3_720x720_a5be41eb-626e-405b-92e1-e62898f48deb.jpg?v=1772213359",
+      "price": 160.0,
+      "summary": "Xtratuf lists the men's 15-inch Legacy Boot at $160.00. The product text describes a triple-dipped latex neoprene boot and calls it 100% waterproof.",
+      "specs": [
+        [
+          "Listed price",
+          "$160.00"
+        ],
+        [
+          "Height",
+          "15 inches"
+        ],
+        [
+          "Waterproof note",
+          "100% waterproof, as written on the product page"
+        ],
+        [
+          "Shell note",
+          "Triple-dipped latex neoprene"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "xtratuf-mens-legacy-15"
+    },
+    "xtratuf-womens-legacy-15": {
+      "brand": "Xtratuf",
+      "merchant": "xtratuf",
+      "gender": "women",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Women's 15\" Legacy Boot",
+      "url": "https://xtratuf.com/products/xwl200",
+      "image": "https://cdn.shopify.com/s/files/1/0676/1385/1803/files/XWL200.jpg?v=1755046747",
+      "price": 160.0,
+      "summary": "Xtratuf lists the women's 15-inch Legacy Boot at $160.00 and describes a triple-dipped latex neoprene boot with a non-marking chevron outsole.",
+      "specs": [
+        [
+          "Listed price",
+          "$160.00"
+        ],
+        [
+          "Height",
+          "15 inches"
+        ],
+        [
+          "Waterproof note",
+          "100% waterproof, as written on the product page"
+        ],
+        [
+          "Outsole",
+          "Non-marking slip-resistant chevron"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "xtratuf-womens-legacy-15"
+    },
+    "xtratuf-mens-ankle-deck": {
+      "brand": "Xtratuf",
+      "merchant": "xtratuf",
+      "gender": "men",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Men's Legacy Ankle Deck Boot",
+      "url": "https://xtratuf.com/products/ldb900",
+      "image": "https://cdn.shopify.com/s/files/1/0676/1385/1803/files/LDB900_gray_main_720x720_d9eefec9-888d-4410-bd26-d854871590fd.jpg?v=1772642824",
+      "price": 140.0,
+      "summary": "Xtratuf lists the men's Legacy Ankle Deck Boot at $140.00. The page gives a 7-inch height and calls the boot 100% waterproof.",
+      "specs": [
+        [
+          "Listed price",
+          "$140.00"
+        ],
+        [
+          "Full height on the spec table",
+          "7 inches"
+        ],
+        [
+          "Waterproof note",
+          "100% waterproof, as written on the product page"
+        ],
+        [
+          "Average weight",
+          "2.00 lb in size 8, as listed"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "xtratuf-mens-ankle-deck"
+    },
+    "xtratuf-womens-ankle-deck": {
+      "brand": "Xtratuf",
+      "merchant": "xtratuf",
+      "gender": "women",
+      "category": "boot",
+      "family": "rain-boot",
+      "name": "Women's Legacy Ankle Deck Boot",
+      "url": "https://xtratuf.com/products/xwldb300",
+      "image": "https://cdn.shopify.com/s/files/1/0676/1385/1803/files/xt_legacyadb_women_xwldb300_singlequarter_16976_G.jpg?v=1758053724",
+      "price": 150.0,
+      "summary": "Xtratuf lists the women's Legacy Ankle Deck Boot at $150.00 and describes a shorter waterproof version of the 15-inch Legacy Boot.",
+      "specs": [
+        [
+          "Listed price",
+          "$150.00"
+        ],
+        [
+          "Waterproof note",
+          "100% waterproof, as written on the product page"
+        ],
+        [
+          "Outsole",
+          "Non-marking slip-resistant"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "xtratuf-womens-ankle-deck"
+    },
+    "muck-mens-arctic-sport-tall": {
+      "brand": "Muck",
+      "merchant": "muck",
+      "gender": "men",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Men's Arctic Sport Tall",
+      "url": "https://muckbootcompany.com/products/asp000a",
+      "image": "https://cdn.shopify.com/s/files/1/0918/9123/7146/files/ASP000A_gray_profile_1400x1400_fe8848fd-1c77-4635-89e9-d886b72538ed.jpg?v=1752666577",
+      "price": 175.0,
+      "summary": "Muck lists the men's Arctic Sport Tall at $175.00. The product text describes fleece lining, a 5 mm neoprene inner boot, and a 2 mm thermal foam underlay.",
+      "specs": [
+        [
+          "Listed price",
+          "$175.00"
+        ],
+        [
+          "Lining",
+          "Fleece, with a 5 mm neoprene inner boot"
+        ],
+        [
+          "Underlay",
+          "2 mm thermal foam"
+        ],
+        [
+          "Waterproof note",
+          "100% waterproof, as written on the product page"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "muck-mens-arctic-sport-tall"
+    },
+    "muck-womens-arctic-sport-ii-tall": {
+      "brand": "Muck",
+      "merchant": "muck",
+      "gender": "women",
+      "category": "boot",
+      "family": "winter-boot",
+      "name": "Women's Arctic Sport II 17\" Tall Boot",
+      "url": "https://muckbootcompany.com/products/mas17w20",
+      "image": "https://cdn.shopify.com/s/files/1/0918/9123/7146/files/mas17w20_profile_g.jpg?v=1790686423",
+      "price": 155.0,
+      "summary": "Muck lists the women's Arctic Sport II 17-inch tall boot at $155.00. The product title is the 17-inch tall boot. Lines on the same page that describe a short or mid-height boot are not repeated here.",
+      "specs": [
+        [
+          "Listed price",
+          "$155.00"
+        ],
+        [
+          "Title on the product page",
+          "Arctic Sport II Women's 17\" Insulated Tall Boot"
+        ]
+      ],
+      "compare_at": null,
+      "in_stock": null,
+      "price_checked": "2026-11-15",
+      "price_source": "merchant product page",
+      "slug": "muck-womens-arctic-sport-ii-tall"
+    }
+  }
+}
