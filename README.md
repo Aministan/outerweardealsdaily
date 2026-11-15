@@ -13,10 +13,10 @@ python3 scripts/build.py
 
 Environment:
 
-- `SITE_URL` origin, default `https://aministan.github.io`
-- `PATH_PREFIX` default `/outerweardealsdaily`
+- `SITE_URL` origin, default `https://outerweardealsdaily.com`
+- `PATH_PREFIX` default empty
 
-For `outerweardealsdaily.com` later, build with `SITE_URL=https://outerweardealsdaily.com` and `PATH_PREFIX=` (empty). Do not add a CNAME until the domain is ready.
+The Pages workflow builds with that origin and an empty prefix. The custom domain is set in the repository Pages settings. Do not add a CNAME file unless a deploy removes the domain.
 
 GitHub Pages deploys from `.github/workflows/pages.yml` on every push to `main`.
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Render site/ from data/links.json.
 
-SITE_URL is the origin (https://aministan.github.io).
-PATH_PREFIX is the project path (/outerweardealsdaily) and is empty on a custom domain.
+SITE_URL is the origin (https://outerweardealsdaily.com).
+PATH_PREFIX is empty on that domain. Set it only for a project-site path such as /outerweardealsdaily.
 """
 import html
 import json
@@ -17,8 +17,8 @@ import links
 ROOT = Path(__file__).resolve().parents[1]
 DATA = json.loads((ROOT / "data" / "links.json").read_text())
 OUT = ROOT / "site"
-SITE_URL = os.environ.get("SITE_URL", "https://aministan.github.io").rstrip("/")
-PREFIX = os.environ.get("PATH_PREFIX", "/outerweardealsdaily").rstrip("/")
+SITE_URL = os.environ.get("SITE_URL", "https://outerweardealsdaily.com").rstrip("/")
+PREFIX = os.environ.get("PATH_PREFIX", "").rstrip("/")
 NAME = DATA["site"]["name"]
 OWNER = DATA["site"]["owner"]
 CHECKED = DATA["site"]["price_checked"]
@@ -769,7 +769,7 @@ def render_static():
     about = (
         "<h1>About</h1>"
         f"<p>{NAME} is a static deal site run by {e(OWNER)}. Each famous jacket or boot gets its own page: the price, when we have one, and a button above the photo, then the specs copied from the manufacturer page.</p>"
-        "<p>The site is built to run on GitHub Pages now and to move to outerweardealsdaily.com later. There is no CNAME file yet. The base URL is set when the site is generated.</p>"
+        "<p>The public site is https://outerweardealsdaily.com. Canonical URLs, the sitemap, and internal links use that origin with no path prefix.</p>"
         "<p>We are not Columbia, Sorel, Canada Goose, Hunter, Dr. Martens, Thursday Boot Company, Frye, Xtratuf, Muck, Patagonia, The North Face, or UGG.</p>"
     )
     privacy = (

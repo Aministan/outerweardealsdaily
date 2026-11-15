@@ -24,8 +24,8 @@ jobs:
       - name: Build site
         run: python3 scripts/build.py
         env:
-          SITE_URL: https://aministan.github.io
-          PATH_PREFIX: /outerweardealsdaily
+          SITE_URL: https://outerweardealsdaily.com
+          PATH_PREFIX: ""
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
