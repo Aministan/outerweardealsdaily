@@ -171,7 +171,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
 <meta property="og:url" content="{e(url)}">{ld}</head><body>
 <header><a class="logo" href="{href('')}">Outerwear<span>Deals</span>Daily</a>
 <nav><a href="{href('')}">Deals</a><a href="{href('jackets')}">Jackets</a><a href="{href('boots')}">Boots</a>
-<a href="{href('best')}">Best of</a><a href="{href('gifts')}">Gifts</a><a href="{href('black-friday-jacket-deals')}">Black Friday</a>
+<a href="{href('best')}">Best of</a><a href="{href('gifts')}">Gifts</a><a href="{href('black-friday-outerwear-boot-deals')}">Black Friday</a>
 <a href="{href('brands')}">Brands</a></nav></header>
 <main>{body}</main>
 <footer><p><b>Affiliate disclosure:</b> {e(OWNER)} runs {NAME}. Applications to Columbia, Sorel, Canada Goose, Hunter, Dr. Martens, Thursday Boot Company, and Frye on CJ are pending. Until a program is approved, buttons go to the merchant's own product page with no tracking. We may earn a commission later, at no extra cost to you. <a href="{href('disclosure')}">Full disclosure</a>.</p>
@@ -703,15 +703,132 @@ def build_guides():
     )
 
 
+BF_PATH = "black-friday-outerwear-boot-deals"
+
+
+def savings_amount(product):
+    """Dollar gap versus the original price already stored. None when either number is missing."""
+    was = compare(product)
+    if was is None:
+        return None
+    return round(was - float(product["price"]), 2)
+
+
+def render_black_friday():
+    deals = [p for p in PRODUCTS.values() if savings_amount(p) is not None]
+    deals.sort(key=lambda p: (-savings_amount(p), p["name"]))
+    unpriced = [p for p in PRODUCTS.values() if not priced(p)]
+    unpriced.sort(key=lambda p: (0 if p["category"] == "jacket" else 1, p["name"]))
+    jackets = [p for p in PRODUCTS.values() if p["category"] == "jacket" and priced(p)]
+    boots = [p for p in PRODUCTS.values() if p["category"] == "boot" and priced(p)]
+    jackets.sort(key=lambda p: (-(savings_amount(p) or 0), p["price"], p["name"]))
+    boots.sort(key=lambda p: (-(savings_amount(p) or 0), p["price"], p["name"]))
+    pageslug = BF_PATH
+    rows = []
+    for product in deals:
+        was = compare(product)
+        saved = savings_amount(product)
+        stock = " Out of stock on the merchant page." if product.get("in_stock") is False else ""
+        rows.append(
+            "<tr>"
+            f"<td><a href='{href(deal_path(product))}'>{e(product['name'])}</a></td>"
+            f"<td>{money(product['price'])}</td>"
+            f"<td>{money(was)}</td>"
+            f"<td>{money(saved)}</td>"
+            f"<td>{e(merchant(product)['name'])}.{e(stock)} {button(product, 'black-friday', pageslug, 'table')}</td>"
+            "</tr>"
+        )
+    unpriced_items = "".join(
+        f"<li><a href='{href(deal_path(product))}'>{e(product['name'])}</a> "
+        f"<span class='meta'>{e(merchant(product)['name'])}</span></li>"
+        for product in unpriced
+    )
+    top = deals[0]
+    faqs = [
+        (
+            "When is Black Friday 2026?",
+            "Black Friday 2026 is Friday, November 27. Cyber Monday is Monday, November 30.",
+        ),
+        (
+            "Which recorded deal saves the most?",
+            f"On {CHECKED}, the largest gap versus an original price printed on the same merchant page is {money(savings_amount(top))} "
+            f"for the {top['name']}: {money(top['price'])} versus {money(compare(top))} at {merchant(top)['name']}."
+            + (" That page said the item was out of stock." if top.get("in_stock") is False else ""),
+        ),
+        (
+            "Why are some models listed without a price?",
+            "The merchant page we read did not show a number, so this page does not invent one. Those models are linked by name only.",
+        ),
+        (
+            "Is this a prediction of Black Friday percent-off?",
+            "No. A savings figure is only the difference between two prices already stored from the merchant page. This page does not estimate a weekend discount.",
+        ),
+        (
+            "Where does the buy button go?",
+            "To the brand's own product page. The link stays the plain product URL, with no tracking parameters, until that merchant's program is approved.",
+        ),
+    ]
+    title = "Black Friday 2026 Outerwear and Boot Deals"
+    desc = (
+        f"Black Friday 2026 is November 27 and Cyber Monday is November 30. "
+        f"Jacket and boot markdowns already on file, sorted by the biggest recorded savings. Prices from {CHECKED}."
+    )
+    intro = (
+        f"Black Friday 2026 is Friday, November 27, and Cyber Monday is Monday, November 30. "
+        f"The deals below use only prices already stored from merchant pages on {CHECKED}. "
+        f"Savings are the gap between the current price and a higher original price on that same page. This is not a forecast."
+    )
+    expect = (
+        "<section class='box' id='what-to-expect'><h2 style='margin-top:0'>What to expect on Black Friday</h2>"
+        "<p>Black Friday is the Friday after Thanksgiving. In 2026 that is November 27, and Cyber Monday is November 30. "
+        "Brands often start offers before Friday and leave some of them up through the weekend. Each brand sets its own offer. "
+        "This page does not predict how deep a markdown will be.</p>"
+        "<p>Use the prices already recorded here as a baseline, then confirm the live price, size, and stock on the merchant page. "
+        "Popular sizes go first. Shipping cutoffs and return windows belong to the store you buy from.</p></section>"
+    )
+    body = (
+        crumbs([("Black Friday 2026", BF_PATH)])
+        + f"<h1>Black Friday 2026 outerwear and boot deals</h1>"
+        + f"<p class='sub'>{e(intro)}</p>"
+        + "<h2>Biggest recorded savings</h2>"
+        + "<p class='note'>Sorted by the dollar gap between the current price and the original price on the same merchant page. "
+        + "Models with only one price, or with no price, are not in this table.</p>"
+        + "<table><thead><tr><th>Model</th><th>Current</th><th>Original on that page</th><th>Savings</th><th>Merchant</th></tr></thead><tbody>"
+        + "".join(rows)
+        + "</tbody></table>"
+        + "<h2>Jackets and coats</h2>"
+        + "<p class='note'>Every jacket we track that has a recorded price. Open the deal page for the manufacturer specs.</p>"
+        + "<div class='grid'>" + "".join(card(p, "black-friday", pageslug) for p in jackets) + "</div>"
+        + "<h2>Boots</h2>"
+        + "<p class='note'>Every boot we track that has a recorded price.</p>"
+        + "<div class='grid'>" + "".join(card(p, "black-friday", pageslug) for p in boots) + "</div>"
+        + "<h2>No price recorded</h2>"
+        + "<p class='note'>These merchant pages did not show a price when we read them. Names only, no numbers.</p>"
+        + f"<ul id='no-price'>{unpriced_items}</ul>"
+        + expect
+        + faq_html(faqs)
+        + f"<p class='note'>Jacket-only roundup: <a href='{href('black-friday-jacket-deals')}'>Black Friday jacket deals</a>.</p>"
+    )
+    page(BF_PATH + "/index.html", title, desc, body, [faq_ld(faqs)])
+    GUIDE_INDEX.append((BF_PATH, "Black Friday 2026 outerwear and boot deals"))
+    print(f"black friday deals={len(deals)} unpriced={len(unpriced)} jackets={len(jackets)} boots={len(boots)}")
+
+
 def render_home():
     priced_rows = [p for p in PRODUCTS.values() if priced(p)]
     priced_rows.sort(key=lambda p: p["price"])
     lead_product = next(p for p in priced_rows if p["slug"] == "columbia-mens-watertight-ii")
     rest = [p for p in priced_rows if p["slug"] != lead_product["slug"]]
     missing = [p for p in PRODUCTS.values() if not priced(p)]
+    bf = (
+        "<section class='box' id='black-friday-2026'><h2 style='margin-top:0'>Black Friday 2026</h2>"
+        "<p>Friday, November 27. Recorded jacket and boot markdowns, largest savings first. Cyber Monday is November 30.</p>"
+        f"<a class='btn' href='{href(BF_PATH)}'>Black Friday outerwear and boot deals</a></section>"
+    )
     body = (
         f"<h1>Jacket and boot deals</h1>"
         f"<p class='sub'>One page per famous model. The price and the buy button sit above the photo. Prices were read from the merchant on {CHECKED}.</p>"
+        + bf
         + lead(lead_product, "home", "index")
         + '<div class="grid">' + "".join(card(p, "home", "index") for p in rest) + "".join(card(p, "home", "index") for p in missing) + "</div>"
         + '<h2>Guides</h2><div class="chips">'
@@ -873,6 +990,22 @@ def assert_site():
             raise SystemExit(f"missing FAQ schema: {product['slug']}")
         if product["url"] not in text:
             raise SystemExit(f"missing product url: {product['slug']}")
+    bf = (OUT / "black-friday-outerwear-boot-deals" / "index.html").read_text()
+    if "FAQPage" not in bf:
+        raise SystemExit("black friday page missing FAQPage")
+    if absolute(BF_PATH) not in bf:
+        raise SystemExit("black friday canonical missing")
+    expect = bf.split("id='what-to-expect'", 1)[1].split("</section>", 1)[0]
+    if "$" in expect or "%" in expect:
+        raise SystemExit("what-to-expect contains a number we should not print")
+    noprice = bf.split("id='no-price'", 1)[1].split("</ul>", 1)[0]
+    if "$" in noprice:
+        raise SystemExit("no-price list contains a price")
+    home = (OUT / "index.html").read_text()
+    if href(BF_PATH) not in home:
+        raise SystemExit("home page missing black friday link")
+    if href(BF_PATH) not in home.split("<nav>", 1)[1].split("</nav>", 1)[0]:
+        raise SystemExit("nav missing black friday link")
     print(f"pages={len(html_files)} deals={len(deal_pages)} priced={sum(1 for p in PRODUCTS.values() if priced(p))}")
 
 
@@ -890,6 +1023,7 @@ def main():
         render_deal(product)
     render_indexes()
     render_static()
+    render_black_friday()
     render_home()
     write_feeds()
     assert_site()
