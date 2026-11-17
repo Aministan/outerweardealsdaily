@@ -108,6 +108,17 @@ def img_tag(product, eager=False):
     return f'<img {extra} decoding="async" src="{e(src)}" alt="{e(alt)}" width="480" height="480">'
 
 
+def thumb_tag(product):
+    """72px photo for a price-table row. Same file the product card already uses."""
+    src = product.get("image") or ""
+    alt = product["name"]
+    if not src:
+        return f'<div class="nophoto thumb" role="img" aria-label="{e(alt)}">No photo</div>'
+    return (
+        f'<img class="thumb" loading="lazy" decoding="async" src="{e(src)}" alt="{e(alt)}" width="72" height="72">'
+    )
+
+
 CSS = """
 :root{--ink:#1c1915;--muted:#5e584f;--line:#e4ddd2;--paper:#f7f3ec;--card:#fff;--accent:#9a3412;--accent-ink:#fff;--good:#14532d}
 *{box-sizing:border-box}
@@ -141,13 +152,20 @@ h2{font-size:24px;margin:28px 0 10px}
 .specs{flex:1;min-width:240px}
 table{width:100%;border-collapse:collapse;font:15px/1.4 system-ui,sans-serif}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table.prices{border-collapse:separate;border-spacing:0}
+table.prices th.photo,table.prices td.photo{position:sticky;left:0;width:84px;background:var(--paper);z-index:1;vertical-align:top}
+table.prices img.thumb{width:72px;height:72px;max-width:72px;object-fit:contain;background:#f3efe8;border-radius:8px;display:block}
+table.prices .btn{white-space:nowrap;margin-top:4px}
+.nophoto.thumb{width:72px;height:72px;min-height:0;padding:4px;font:11px/1.2 system-ui,sans-serif}
 .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;text-decoration:none;font:14px system-ui,sans-serif}
 footer{padding:22px;color:#d6d3d1;background:#1c1915;font:14px/1.5 system-ui,sans-serif}
 footer a{color:#fdba74}
 .note{font:14px/1.45 system-ui,sans-serif;color:var(--muted)}
-@media(max-width:640px){h1{font-size:26px}header{padding:12px}.lead-offer{padding:10px 12px}}
+@media(max-width:640px){h1{font-size:26px}header{padding:12px}.lead-offer{padding:10px 12px}th,td{padding:8px 8px}table.prices img.thumb,.nophoto.thumb{width:64px;height:64px;max-width:64px}table.prices th.photo,table.prices td.photo{width:76px}}
 """
 
 
@@ -731,6 +749,7 @@ def render_black_friday():
         stock = " Out of stock on the merchant page." if product.get("in_stock") is False else ""
         rows.append(
             "<tr>"
+            f"<td class='photo'>{thumb_tag(product)}</td>"
             f"<td><a href='{href(deal_path(product))}'>{e(product['name'])}</a></td>"
             f"<td>{money(product['price'])}</td>"
             f"<td>{money(was)}</td>"
@@ -793,9 +812,9 @@ def render_black_friday():
         + "<h2>Biggest recorded savings</h2>"
         + "<p class='note'>Sorted by the dollar gap between the current price and the original price on the same merchant page. "
         + "Models with only one price, or with no price, are not in this table.</p>"
-        + "<table><thead><tr><th>Model</th><th>Current</th><th>Original on that page</th><th>Savings</th><th>Merchant</th></tr></thead><tbody>"
+        + "<div class='scroll'><table class='prices'><thead><tr><th class='photo'><span class='sr-only'>Photo</span></th><th>Model</th><th>Current</th><th>Original on that page</th><th>Savings</th><th>Merchant</th></tr></thead><tbody>"
         + "".join(rows)
-        + "</tbody></table>"
+        + "</tbody></table></div>"
         + "<h2>Jackets and coats</h2>"
         + "<p class='note'>Every jacket we track that has a recorded price. Open the deal page for the manufacturer specs.</p>"
         + "<div class='grid'>" + "".join(card(p, "black-friday", pageslug) for p in jackets) + "</div>"
@@ -958,17 +977,21 @@ def assert_site():
     if len(deal_pages) < 40:
         raise SystemExit(f"expected at least 40 deal pages, got {len(deal_pages)}")
     hrefs = []
+    srcs = []
     blob_parts = []
     for path in html_files:
         text = path.read_text()
         blob_parts.append(text)
         hrefs.extend(re.findall(r'href="([^"]+)"', text))
+        srcs.extend(re.findall(r'src="([^"]+)"', text))
     blob = "\n".join(blob_parts)
-    for href_value in hrefs:
+    for href_value in hrefs + srcs:
         low = href_value.lower()
         for banned in BANNED:
             if banned in low:
                 raise SystemExit(f"banned host in output: {banned} in {href_value}")
+        if "/go/" in low or low.startswith("go/"):
+            raise SystemExit(f"redirect path in output: {href_value}")
     if "aggregateRating" in blob or "reviewCount" in blob:
         raise SystemExit("ratings leaked into schema")
     for product in PRODUCTS.values():
@@ -1001,6 +1024,28 @@ def assert_site():
     noprice = bf.split("id='no-price'", 1)[1].split("</ul>", 1)[0]
     if "$" in noprice:
         raise SystemExit("no-price list contains a price")
+    table_at = bf.find("<table class='prices'>")
+    grid_at = bf.find("<div class='grid'>")
+    if table_at < 0 or grid_at < 0 or table_at > grid_at:
+        raise SystemExit("black friday price table is not before the card grid")
+    table_html = bf[table_at:grid_at]
+    for product in PRODUCTS.values():
+        if savings_amount(product) is None:
+            continue
+        photo = thumb_tag(product)
+        if photo not in table_html:
+            raise SystemExit(f"price table missing thumbnail: {product['slug']}")
+        if 'loading="lazy"' not in photo or 'width="72"' not in photo or 'height="72"' not in photo:
+            if product.get("image"):
+                raise SystemExit(f"thumbnail is missing lazy size: {product['slug']}")
+        if product.get("image") and img_tag(product) not in bf[grid_at:]:
+            raise SystemExit(f"card image missing below the table: {product['slug']}")
+        if money(product["price"]) not in table_html:
+            raise SystemExit(f"table price missing: {product['slug']}")
+        was = compare(product)
+        saved = savings_amount(product)
+        if was is None or saved is None or money(was) not in table_html or money(saved) not in table_html:
+            raise SystemExit(f"table savings changed: {product['slug']}")
     home = (OUT / "index.html").read_text()
     if href(BF_PATH) not in home:
         raise SystemExit("home page missing black friday link")
