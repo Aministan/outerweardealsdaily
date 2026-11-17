@@ -8,10 +8,12 @@ import html
 import json
 import os
 import re
+import shutil
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import images
 import links
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -99,21 +101,79 @@ def deal_path(product):
     return f"{kind}/{product['slug']}"
 
 
-def img_tag(product, eager=False):
+_JPEG_SIZE = {}
+
+
+def for_sale(product):
+    """False only when the merchant page said the item was out of stock."""
+    return product.get("in_stock") is not False
+
+
+def image_file(product):
     src = product.get("image") or ""
+    if not src or src.startswith(("http://", "https://")):
+        return None
+    path = ROOT / src.lstrip("/")
+    return path if path.is_file() else None
+
+
+def image_src(product):
+    path = image_file(product)
+    if path is None:
+        return ""
+    rel = "/" + str(path.relative_to(ROOT)).replace("\\", "/")
+    return f"{PREFIX}{rel}" if PREFIX else rel
+
+
+def jpeg_size(path):
+    key = str(path)
+    if key in _JPEG_SIZE:
+        return _JPEG_SIZE[key]
+    width, height = 600, 600
+    try:
+        data = path.read_bytes()
+    except OSError:
+        data = b""
+    sof = {0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7, 0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF}
+    if data[:2] == b"\xff\xd8":
+        i = 2
+        while i + 9 < len(data):
+            if data[i] != 0xFF:
+                i += 1
+                continue
+            marker = data[i + 1]
+            if marker in sof:
+                height = int.from_bytes(data[i + 5:i + 7], "big")
+                width = int.from_bytes(data[i + 7:i + 9], "big")
+                break
+            if marker in (0xD8, 0xD9, 0x01) or 0xD0 <= marker <= 0xD7:
+                i += 2
+                continue
+            length = int.from_bytes(data[i + 2:i + 4], "big")
+            if length < 2:
+                break
+            i += 2 + length
+    _JPEG_SIZE[key] = (width, height)
+    return width, height
+
+
+def img_tag(product, eager=False):
+    src = image_src(product)
+    path = image_file(product)
+    if not src or path is None:
+        return ""
     alt = product["name"]
-    if not src:
-        return f'<div class="nophoto" role="img" aria-label="{e(alt)}">No photo from the merchant page</div>'
+    width, height = jpeg_size(path)
     extra = 'fetchpriority="high"' if eager else 'loading="lazy"'
-    return f'<img {extra} decoding="async" src="{e(src)}" alt="{e(alt)}" width="480" height="480">'
+    return f'<img {extra} decoding="async" src="{e(src)}" alt="{e(alt)}" width="{width}" height="{height}">'
 
 
 def thumb_tag(product):
     """72px photo for a price-table row. Same file the product card already uses."""
-    src = product.get("image") or ""
-    alt = product["name"]
+    src = image_src(product)
     if not src:
-        return f'<div class="nophoto thumb" role="img" aria-label="{e(alt)}">No photo</div>'
+        return ""
+    alt = product["name"]
     return (
         f'<img class="thumb" loading="lazy" decoding="async" src="{e(src)}" alt="{e(alt)}" width="72" height="72">'
     )
@@ -122,7 +182,7 @@ def thumb_tag(product):
 CSS = """
 :root{--ink:#1c1915;--muted:#5e584f;--line:#e4ddd2;--paper:#f7f3ec;--card:#fff;--accent:#9a3412;--accent-ink:#fff;--good:#14532d}
 *{box-sizing:border-box}
-body{margin:0;font:17px/1.5 Georgia, "Iowan Old Style", "Palatino Linotype", serif;color:var(--ink);background:var(--paper)}
+body{margin:0;font:17px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper)}
 a{color:#9a3412}
 header{display:flex;flex-wrap:wrap;gap:12px 28px;align-items:baseline;padding:16px 22px;background:#1c1915;color:#f7f3ec}
 .logo{font-weight:700;font-size:22px;color:#f7f3ec;text-decoration:none;letter-spacing:-.02em}
@@ -143,12 +203,11 @@ h2{font-size:24px;margin:28px 0 10px}
 .btn{display:inline-block;background:var(--accent);color:var(--accent-ink);text-decoration:none;font:700 16px/1.2 system-ui,sans-serif;padding:12px 16px;border-radius:10px;margin-top:8px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column}
-.card img,.hero img,.nophoto{width:100%;height:220px;object-fit:contain;background:#f3efe8;border-radius:10px}
-.nophoto{display:flex;align-items:center;justify-content:center;text-align:center;color:var(--muted);font:14px system-ui,sans-serif;padding:12px}
+.card img{width:100%;aspect-ratio:1/1;height:auto;object-fit:contain;background:#fff;border-radius:10px;display:block}
+.hero img{width:min(100%,320px);aspect-ratio:1/1;height:auto;object-fit:contain;background:#fff;border-radius:10px;display:block}
 .card .nm{font-weight:700;margin-top:8px}
 .card .nm a{color:inherit;text-decoration:none}
 .hero{display:flex;gap:18px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
-.hero img,.hero .nophoto{width:min(100%,280px);height:280px}
 .specs{flex:1;min-width:240px}
 table{width:100%;border-collapse:collapse;font:15px/1.4 system-ui,sans-serif}
 th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -156,16 +215,27 @@ th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);verti
 .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table.prices{border-collapse:separate;border-spacing:0}
 table.prices th.photo,table.prices td.photo{position:sticky;left:0;width:84px;background:var(--paper);z-index:1;vertical-align:top}
-table.prices img.thumb{width:72px;height:72px;max-width:72px;object-fit:contain;background:#f3efe8;border-radius:8px;display:block}
+table.prices img.thumb{width:72px;height:72px;max-width:72px;object-fit:contain;background:#fff;border-radius:8px;display:block}
 table.prices .btn{white-space:nowrap;margin-top:4px}
-.nophoto.thumb{width:72px;height:72px;min-height:0;padding:4px;font:11px/1.2 system-ui,sans-serif}
 .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin:16px 0}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;text-decoration:none;font:14px system-ui,sans-serif}
 footer{padding:22px;color:#d6d3d1;background:#1c1915;font:14px/1.5 system-ui,sans-serif}
 footer a{color:#fdba74}
 .note{font:14px/1.45 system-ui,sans-serif;color:var(--muted)}
-@media(max-width:640px){h1{font-size:26px}header{padding:12px}.lead-offer{padding:10px 12px}th,td{padding:8px 8px}table.prices img.thumb,.nophoto.thumb{width:64px;height:64px;max-width:64px}table.prices th.photo,table.prices td.photo{width:76px}}
+@media(max-width:640px){
+ h1{font-size:26px}header{padding:12px}.lead-offer{padding:10px 12px}th,td{padding:8px 8px}
+ .scroll{overflow:visible}
+ table.prices thead{display:none}
+ table.prices,table.prices tbody,table.prices tr{display:block;width:100%}
+ table.prices tr{background:#fff;border:1px solid var(--line);border-radius:14px;margin:0 0 12px;padding:12px}
+ table.prices td{display:grid;grid-template-columns:7.25rem minmax(0,1fr);gap:8px;align-items:center;border:0;padding:5px 0;width:auto}
+ table.prices td::before{content:attr(data-label);font-weight:700;color:var(--muted)}
+ table.prices td.photo{display:block;position:static;width:auto;background:transparent;padding:0 0 8px}
+ table.prices td.photo::before{content:none}
+ table.prices img.thumb{width:72px;height:72px;max-width:72px}
+ table.prices .btn{white-space:normal}
+}
 """
 
 
@@ -238,11 +308,14 @@ def lead(product, pagetype, pageslug):
 
 
 def card(product, pagetype, pageslug):
+    photo = img_tag(product)
+    if not photo:
+        return ""
     price = money(product["price"]) if priced(product) else "Check today's price"
     was = compare(product)
     was_html = f'<span class="was">{money(was)}</span>' if was else ""
     return (
-        f'<article class="card">{img_tag(product)}'
+        f'<article class="card">{photo}'
         f'<div class="meta">{e(product["brand"])}</div>'
         f'<div class="nm"><a href="{href(deal_path(product))}">{e(product["name"])}</a></div>'
         f'<div><span class="price" style="font-size:20px">{price}</span>{was_html}</div>'
@@ -257,7 +330,7 @@ def related(product, limit=4):
             other["brand"] == product["brand"] or other["family"] == product["family"]
         )
     ]
-    rows.sort(key=lambda row: (row["family"] != product["family"], row["brand"] != product["brand"], row["name"]))
+    rows.sort(key=lambda row: (row.get("in_stock") is False, row["family"] != product["family"], row["brand"] != product["brand"], row["name"]))
     return rows[:limit]
 
 
@@ -270,8 +343,9 @@ def product_ld(product):
         "description": product["summary"],
         "url": absolute(deal_path(product)),
     }
-    if product.get("image"):
-        data["image"] = product["image"]
+    src = image_src(product)
+    if src:
+        data["image"] = SITE_URL + src
     if product.get("style"):
         data["sku"] = product["style"]
     if priced(product):
@@ -357,7 +431,9 @@ def render_deal(product):
     faqs = deal_faqs(product)
     also = ""
     if others:
-        also = '<h2>Also popular</h2><div class="grid">' + "".join(card(row, "deal", use_slug) for row in others) + "</div>"
+        cards = "".join(card(row, "deal", use_slug) for row in others)
+        if cards:
+            also = '<h2>Also popular</h2><div class="grid">' + cards + "</div>"
     guides = guide_links_for(product)
     guide_html = ""
     if guides:
@@ -390,12 +466,14 @@ GUIDE_INDEX = []
 
 def add_guide(path, title, desc, intro, slugs, faqs, extra=""):
     rows = [PRODUCTS[slug] for slug in slugs if slug in PRODUCTS]
+    rows.sort(key=lambda row: row.get("in_stock") is False)
+    featured = next((row for row in rows if for_sale(row)), None)
     pagetype = path.split("/")[0]
     pageslug = path.strip("/").split("/")[-1]
     body = (
         crumbs([(title, path)])
         + f"<h1>{e(title)}</h1><p class='sub'>{e(intro)}</p>"
-        + (lead(rows[0], pagetype, pageslug) if rows else "")
+        + (lead(featured, pagetype, pageslug) if featured else "")
         + extra
         + '<div class="grid">' + "".join(card(row, pagetype, pageslug) for row in rows) + "</div>"
         + faq_html(faqs)
@@ -733,14 +811,14 @@ def savings_amount(product):
 
 
 def render_black_friday():
-    deals = [p for p in PRODUCTS.values() if savings_amount(p) is not None]
+    deals = [p for p in PRODUCTS.values() if savings_amount(p) is not None and for_sale(p)]
     deals.sort(key=lambda p: (-savings_amount(p), p["name"]))
     unpriced = [p for p in PRODUCTS.values() if not priced(p)]
     unpriced.sort(key=lambda p: (0 if p["category"] == "jacket" else 1, p["name"]))
     jackets = [p for p in PRODUCTS.values() if p["category"] == "jacket" and priced(p)]
     boots = [p for p in PRODUCTS.values() if p["category"] == "boot" and priced(p)]
-    jackets.sort(key=lambda p: (-(savings_amount(p) or 0), p["price"], p["name"]))
-    boots.sort(key=lambda p: (-(savings_amount(p) or 0), p["price"], p["name"]))
+    jackets.sort(key=lambda p: (p.get("in_stock") is False, -(savings_amount(p) or 0), p["price"], p["name"]))
+    boots.sort(key=lambda p: (p.get("in_stock") is False, -(savings_amount(p) or 0), p["price"], p["name"]))
     pageslug = BF_PATH
     rows = []
     for product in deals:
@@ -750,11 +828,11 @@ def render_black_friday():
         rows.append(
             "<tr>"
             f"<td class='photo'>{thumb_tag(product)}</td>"
-            f"<td><a href='{href(deal_path(product))}'>{e(product['name'])}</a></td>"
-            f"<td>{money(product['price'])}</td>"
-            f"<td>{money(was)}</td>"
-            f"<td>{money(saved)}</td>"
-            f"<td>{e(merchant(product)['name'])}.{e(stock)} {button(product, 'black-friday', pageslug, 'table')}</td>"
+            f"<td data-label='Model'><a href='{href(deal_path(product))}'>{e(product['name'])}</a></td>"
+            f"<td data-label='Current'>{money(product['price'])}</td>"
+            f"<td data-label='Original'>{money(was)}</td>"
+            f"<td data-label='Savings'>{money(saved)}</td>"
+            f"<td data-label='Merchant'>{e(merchant(product)['name'])}.{e(stock)} {button(product, 'black-friday', pageslug, 'table')}</td>"
             "</tr>"
         )
     unpriced_items = "".join(
@@ -811,7 +889,7 @@ def render_black_friday():
         + f"<p class='sub'>{e(intro)}</p>"
         + "<h2>Biggest recorded savings</h2>"
         + "<p class='note'>Sorted by the dollar gap between the current price and the original price on the same merchant page. "
-        + "Models with only one price, or with no price, are not in this table.</p>"
+        + "Models with only one price, with no price, or out of stock on that page are not in this table.</p>"
         + "<div class='scroll'><table class='prices'><thead><tr><th class='photo'><span class='sr-only'>Photo</span></th><th>Model</th><th>Current</th><th>Original on that page</th><th>Savings</th><th>Merchant</th></tr></thead><tbody>"
         + "".join(rows)
         + "</tbody></table></div>"
@@ -835,14 +913,14 @@ def render_black_friday():
 
 def render_home():
     priced_rows = [p for p in PRODUCTS.values() if priced(p)]
-    priced_rows.sort(key=lambda p: p["price"])
-    lead_product = next(p for p in priced_rows if p["slug"] == "columbia-mens-watertight-ii")
+    priced_rows.sort(key=lambda p: (p.get("in_stock") is False, p["price"], p["name"]))
+    lead_product = next(p for p in priced_rows if p["slug"] == "columbia-mens-watertight-ii" and for_sale(p))
     rest = [p for p in priced_rows if p["slug"] != lead_product["slug"]]
     missing = [p for p in PRODUCTS.values() if not priced(p)]
+    missing.sort(key=lambda p: (p.get("in_stock") is False, p["name"]))
     bf = (
-        "<section class='box' id='black-friday-2026'><h2 style='margin-top:0'>Black Friday 2026</h2>"
-        "<p>Friday, November 27. Recorded jacket and boot markdowns, largest savings first. Cyber Monday is November 30.</p>"
-        f"<a class='btn' href='{href(BF_PATH)}'>Black Friday outerwear and boot deals</a></section>"
+        f"<section class='box' id='black-friday-2026'><h2 style='margin-top:0'><a href='{href(BF_PATH)}'>Black Friday 2026 outerwear and boot deals</a></h2>"
+        "<p>Friday, November 27. Recorded jacket and boot markdowns, largest savings first. Cyber Monday is November 30.</p></section>"
     )
     body = (
         f"<h1>Jacket and boot deals</h1>"
@@ -871,6 +949,7 @@ def render_indexes():
         ("men", "Men's jackets and boots", [p for p in PRODUCTS.values() if p["gender"] in ("men", "unisex")]),
         ("women", "Women's jackets and boots", [p for p in PRODUCTS.values() if p["gender"] in ("women", "unisex")]),
     ):
+        rows = sorted(rows, key=lambda p: (p.get("in_stock") is False, p["name"]))
         body = f"<h1>{e(title)}</h1><div class='grid'>" + "".join(card(p, path, "index") for p in rows) + "</div>"
         page(path + "/index.html", title, f"{title} with a deal page for each model.", body)
     brands = {}
@@ -883,6 +962,7 @@ def render_indexes():
     page("brands/index.html", "Brands", "Jacket and boot brands on OuterwearDealsDaily.", f"<h1>Brands</h1><div class='chips'>{chips}</div>")
     for brand, rows in brands.items():
         bslug = re.sub(r"[^a-z0-9]+", "-", brand.lower()).strip("-")
+        rows = sorted(rows, key=lambda p: (p.get("in_stock") is False, p["name"]))
         body = f"<h1>{e(brand)}</h1><div class='grid'>" + "".join(card(p, "brand", bslug) for p in rows) + "</div>"
         page(f"brands/{bslug}/index.html", f"{brand} deals", f"{brand} models we track, with merchant links.", body)
 
@@ -928,7 +1008,20 @@ def render_static():
     )
 
 
+def publish_media():
+    src_root = ROOT / "media"
+    if not src_root.exists():
+        return
+    for path in src_root.rglob("*"):
+        if not path.is_file():
+            continue
+        dest = OUT / path.relative_to(ROOT)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(path, dest)
+
+
 def write_feeds():
+    publish_media()
     (OUT / "style.css").write_text(CSS)
     (OUT / ".nojekyll").write_text("")
     urls = []
@@ -992,6 +1085,14 @@ def assert_site():
                 raise SystemExit(f"banned host in output: {banned} in {href_value}")
         if "/go/" in low or low.startswith("go/"):
             raise SystemExit(f"redirect path in output: {href_value}")
+        if href_value in srcs and (low.startswith("http:") or low.startswith("https:")):
+            raise SystemExit(f"hotlinked image: {href_value}")
+    if "No photo from the merchant page" in blob or "Georgia" in (OUT / "style.css").read_text():
+        raise SystemExit("grey photo box or serif body font is still in the site")
+    for src_value in srcs:
+        if src_value.startswith("/media/"):
+            if not (OUT / src_value.lstrip("/")).is_file():
+                raise SystemExit(f"missing local image: {src_value}")
     if "aggregateRating" in blob or "reviewCount" in blob:
         raise SystemExit("ratings leaked into schema")
     for product in PRODUCTS.values():
@@ -999,10 +1100,13 @@ def assert_site():
         text = page_file.read_text()
         lead_at = text.find("lead-offer")
         img_at = text.find("<img")
-        photo_at = text.find("nophoto")
-        visual = img_at if img_at >= 0 else photo_at
-        if lead_at < 0 or visual < 0 or lead_at > visual:
-            raise SystemExit(f"price/button is not above the photo: {product['slug']}")
+        if lead_at < 0:
+            raise SystemExit(f"missing lead: {product['slug']}")
+        if product.get("image"):
+            if img_at < 0 or lead_at > img_at:
+                raise SystemExit(f"price/button is not above the photo: {product['slug']}")
+        elif img_at >= 0 or "nophoto" in text:
+            raise SystemExit(f"photoless page still shows a photo box: {product['slug']}")
         if priced(product):
             if money(product["price"]) not in text:
                 raise SystemExit(f"missing price for {product['slug']}")
@@ -1032,6 +1136,10 @@ def assert_site():
     for product in PRODUCTS.values():
         if savings_amount(product) is None:
             continue
+        if not for_sale(product):
+            if product["name"] in table_html or href(deal_path(product)) in table_html:
+                raise SystemExit(f"out of stock product is in the savings table: {product['slug']}")
+            continue
         photo = thumb_tag(product)
         if photo not in table_html:
             raise SystemExit(f"price table missing thumbnail: {product['slug']}")
@@ -1051,10 +1159,20 @@ def assert_site():
         raise SystemExit("home page missing black friday link")
     if href(BF_PATH) not in home.split("<nav>", 1)[1].split("</nav>", 1)[0]:
         raise SystemExit("nav missing black friday link")
+    box = home.split("id='black-friday-2026'", 1)[1].split("</section>", 1)[0]
+    if "btn" in box or box.count("Black Friday") != 1:
+        raise SystemExit("home black friday promo is still repeated")
+    boots_page = (OUT / "best" / "mens-winter-boots" / "index.html").read_text()
+    lead_name = re.search(r'class="lead-name"><b>([^<]+)', boots_page)
+    if not lead_name or "2976" in lead_name.group(1):
+        raise SystemExit("out of stock boot leads the men's winter boots page")
+    if "data-label='Savings'" not in bf or "data-label='Merchant'" not in bf:
+        raise SystemExit("savings rows are missing mobile labels")
     print(f"pages={len(html_files)} deals={len(deal_pages)} priced={sum(1 for p in PRODUCTS.values() if priced(p))}")
 
 
 def main():
+    images.localize(DATA)
     if OUT.exists():
         for child in sorted(OUT.rglob("*"), reverse=True):
             if child.is_file():
