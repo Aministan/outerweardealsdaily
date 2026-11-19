@@ -252,6 +252,7 @@ def page(path, title, desc, body, jsonld=None, index=True):
     robots = "" if index else '<meta name="robots" content="noindex">'
     doc = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="fo-verify" content="385ed1aa-3432-4d4c-9e06-0f27b689e9b7" />
 {robots}<title>{e(title)}</title><meta name="description" content="{e(desc)}">
 <link rel="canonical" href="{e(url)}"><link rel="stylesheet" href="{e(href('style.css')[:-1] if False else PREFIX + '/style.css')}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{e(NAME)}">
